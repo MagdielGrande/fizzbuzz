@@ -1,4 +1,3 @@
-
 const Reader = require("./../../../lib/utils/Reader")
 
 describe("Reader", () => {
@@ -8,5 +7,4 @@ describe("Reader", () => {
         expect(explorers.length).toBe(15)
 
     })
-
 })
