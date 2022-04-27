@@ -1,5 +1,6 @@
 const Reader = require("./lib/utils/Reader");
 const ExplorerService = require("./lib/services/ExplorerService");
+const FizzbuzzService = require("./lib/services/FizzbuzzService");
 
 // Part 1 Read json file ===========================
 const explorers = Reader.readJsonFile("explorers.json")
@@ -20,19 +21,14 @@ const usernamesInNode = ExplorerService.getExplorersUsernamesByMission(explorers
 // Score: 3, Trick: FIZZ.
 // Score: 4, Trick: 4.
 // Score: 5, Trick: 5.
+const explorer1 = {name: "Explorer1", score: 2}
 
-const assignFizzTrick = function(explorer){
-    if(explorer.score%3 === 0){
-        explorer.trick = "FIZZ";
-        return explorer;
-    }else{
-        explorer.trick = explorer.score;
-        return explorer;
-    }
-};
+const D = FizzbuzzService.applyValidationInExplorer(explorer1)
 
-const explorersInNodeAndFizzTrick = explorersInNode.map((explorer) => assignFizzTrick(explorer));
 
+
+const explorersInNodeAndFizzTrick = D.map((explorer) => explorer1);
+console.log (explorersInNodeAndFizzTrick)
 // Part 6: Get a new list of explorers in node if the score number is divisible by 5, we need to set a new property called trick and set the value BUZZ, if not this value should be just the score
 //
 const assignBuzzTrick = function(explorer){
@@ -43,7 +39,7 @@ const assignBuzzTrick = function(explorer){
         explorer.trick = explorer.score;
         return explorer;
     }
-};
+}
 
 const explorersInNodeAndBuzzTrick = explorersInNode.map((explorer) => assignBuzzTrick(explorer));
 
